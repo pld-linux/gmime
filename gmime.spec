@@ -10,7 +10,7 @@ Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
 Version:	2.4.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.4/%{name}-%{version}.tar.bz2
@@ -122,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	HTML_DIR=%{_gtkdocdir}/gmime
+	HTML_DIR=%{_gtkdocdir}
 
 rm -f $RPM_BUILD_ROOT%{_bindir}/uu{de,en}code
 
@@ -152,7 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/gmime
+%{_gtkdocdir}/gmime-2.4
 
 %if %{with dotnet}
 %files -n dotnet-gmime-sharp
