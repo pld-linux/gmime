@@ -9,12 +9,12 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.4.23
+Version:	2.4.24
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	c071358e0d6c80788bebb526ced90d42
+# Source0-md5:	8657e7103158eb667e34a0eecbae0ab7
 Patch0:		%{name}-link.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf
