@@ -9,12 +9,12 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.4.25
+Version:	2.4.26
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	3e78c6c9566ab86259bcfd7fdb15ebca
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.4/%{name}-%{version}.tar.xz
+# Source0-md5:	b02cbe21cd4ad82eb961f821f93dde58
 Patch0:		%{name}-link.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf
@@ -24,6 +24,8 @@ BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 %if %{with dotnet}
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2.9.0
