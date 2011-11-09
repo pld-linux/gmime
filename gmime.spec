@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	dotnet	# without .net support
+%bcond_without	dotnet	# without .NET support
 #
 %ifarch i386
 %undefine	with_dotnet
@@ -9,18 +9,19 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.4.26
+Version:	2.6.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.4/%{name}-%{version}.tar.xz
-# Source0-md5:	b02cbe21cd4ad82eb961f821f93dde58
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
+# Source0-md5:	2dd685cb00531c79b96690b85fb19f73
 Patch0:		%{name}-link.patch
 URL:		http://spruce.sourceforge.net/gmime/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.54
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.1
+BuildRequires:	glib2-devel >= 1:2.18.0
+BuildRequires:	gpgme-devel >= 1:1.1.6
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -31,6 +32,8 @@ BuildRequires:	zlib-devel
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2.9.0
 BuildRequires:	mono-csharp >= 1.1.16.1
 %endif
+Requires:	glib2 >= 1:2.18.0
+Requires:	gpgme >= 1:1.1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,7 +47,8 @@ Summary:	Header files to develop libgmime applications
 Summary(pl.UTF-8):	Pliki nagłówkowe do tworzenia programów z użyciem libgmime
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.12.1
+Requires:	glib2-devel >= 1:2.18.0
+Requires:	gpgme-devel >= 1:1.1.6
 Requires:	zlib-devel
 
 %description devel
@@ -109,7 +113,7 @@ Część dla programistów dotnet-gmime-sharp.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -127,7 +131,10 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
-rm -f $RPM_BUILD_ROOT%{_bindir}/uu{de,en}code
+# packaged in sharutils
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/uu{de,en}code
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgmime-2.6.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -138,24 +145,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
-%attr(755,root,root) %{_libdir}/libgmime-2.4.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgmime-2.4.so.2
+%attr(755,root,root) %{_libdir}/libgmime-2.6.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgmime-2.6.so.0
 
 %files devel
 %defattr(644,root,root,755)
 %doc PORTING
-%attr(755,root,root) %{_libdir}/libgmime-2.4.so
-%{_libdir}/libgmime-2.4.la
-%{_pkgconfigdir}/gmime-2.4.pc
-%{_includedir}/gmime-2.4
+%attr(755,root,root) %{_libdir}/libgmime-2.6.so
+%{_pkgconfigdir}/gmime-2.6.pc
+%{_includedir}/gmime-2.6
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libgmime-2.4.a
+%{_libdir}/libgmime-2.6.a
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/gmime-2.4
+%{_gtkdocdir}/gmime-2.6
 
 %if %{with dotnet}
 %files -n dotnet-gmime-sharp
@@ -164,6 +170,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n dotnet-gmime-sharp-devel
 %defattr(644,root,root,755)
-%{_prefix}/lib/mono/gmime-sharp-2.4
-%{_pkgconfigdir}/gmime-sharp-2.4.pc
+%{_prefix}/lib/mono/gmime-sharp-2.6
+%{_pkgconfigdir}/gmime-sharp-2.6.pc
 %endif
