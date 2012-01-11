@@ -9,13 +9,14 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.6.3
+Version:	2.6.4
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
-# Source0-md5:	db9d8e40c2b3f969aca28f56c4ea1803
+# Source0-md5:	fc76389af2ddc82ee69154c6a6efd536
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-mono.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
@@ -110,6 +111,7 @@ Część dla programistów dotnet-gmime-sharp.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -131,8 +133,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir}
 
-# packaged in sharutils
-%{__rm} $RPM_BUILD_ROOT%{_bindir}/uu{de,en}code
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libgmime-2.6.la
 
@@ -145,6 +145,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
+%attr(755,root,root) %{_bindir}/gmime-uudecode
+%attr(755,root,root) %{_bindir}/gmime-uuencode
 %attr(755,root,root) %{_libdir}/libgmime-2.6.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgmime-2.6.so.0
 

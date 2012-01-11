@@ -1,0 +1,27 @@
+--- gmime-2.6.4/mono/gmime-sharp.pc.in.orig	2012-01-08 17:07:59.000000000 +0100
++++ gmime-2.6.4/mono/gmime-sharp.pc.in	2012-01-11 17:00:21.702203948 +0100
+@@ -1,5 +1,5 @@
+ exec_prefix=@prefix@
+-libdir=@libdir@
++libdir=@prefix@/lib
+ 
+ Name: gmime-sharp 
+ Version: @VERSION@
+--- gmime-2.6.4/mono/Makefile.am.orig	2012-01-08 17:07:59.000000000 +0100
++++ gmime-2.6.4/mono/Makefile.am	2012-01-11 17:02:20.072207912 +0100
+@@ -84,11 +84,11 @@
+ install-data-hook:
+ 	@if test -n '$(TARGET)'; then									\
+ 	  if test -n '$(DESTDIR)'; then									\
+-	    echo "$(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /root $(DESTDIR)$(libdir)";	\
+-	    $(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /root $(DESTDIR)$(libdir) || exit 1;	\
++	    echo "$(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /root $(DESTDIR)$(prefix)/lib";	\
++	    $(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /root $(DESTDIR)$(prefix)/lib || exit 1;	\
+ 	  else												\
+-	    echo "$(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /gacdir $(libdir)";		\
+-	    $(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /gacdir $(libdir) || exit 1;		\
++	    echo "$(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /gacdir $(prefix)/lib";		\
++	    $(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE_SHARP) /gacdir $(prefix)/lib || exit 1;		\
+ 	  fi;												\
+ 	fi
+ 
