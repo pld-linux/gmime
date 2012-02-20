@@ -9,14 +9,13 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.6.4
+Version:	2.6.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
-# Source0-md5:	fc76389af2ddc82ee69154c6a6efd536
+# Source0-md5:	3fcb1752b9b625122009e3aa84eee462
 Patch0:		%{name}-link.patch
-Patch1:		%{name}-mono.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
@@ -111,7 +110,6 @@ Część dla programistów dotnet-gmime-sharp.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -145,8 +143,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
-%attr(755,root,root) %{_bindir}/gmime-uudecode
-%attr(755,root,root) %{_bindir}/gmime-uuencode
 %attr(755,root,root) %{_libdir}/libgmime-2.6.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgmime-2.6.so.0
 
@@ -173,5 +169,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -n dotnet-gmime-sharp-devel
 %defattr(644,root,root,755)
 %{_prefix}/lib/mono/gmime-sharp-2.6
+%{_datadir}/gapi-2.0/gmime-api.xml
 %{_pkgconfigdir}/gmime-sharp-2.6.pc
 %endif
