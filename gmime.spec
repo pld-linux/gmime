@@ -9,12 +9,12 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.6.5
+Version:	2.6.6
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
-# Source0-md5:	3fcb1752b9b625122009e3aa84eee462
+# Source0-md5:	cdff0a47ea3803def4e716ab5355de88
 Patch0:		%{name}-link.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf >= 2.54
@@ -120,6 +120,7 @@ Część dla programistów dotnet-gmime-sharp.
 %configure \
 	--enable-largefile \
 	--%{?with_dotnet:enable}%{!?with_dotnet:disable}-mono \
+	--enable-smime \
 	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
