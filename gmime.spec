@@ -9,12 +9,12 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.6.15
+Version:	2.6.16
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
-# Source0-md5:	a139ee5870ec4c0bf28fcff8ac0af444
+# Source0-md5:	05c365dd1c4fd3617ec9c68f134075f1
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-am.patch
 URL:		http://spruce.sourceforge.net/gmime/
@@ -22,6 +22,7 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
+BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gpgme-devel >= 1:1.1.6
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	libtool
@@ -108,6 +109,19 @@ Development part of dotnet-gmime-sharp.
 %description -n dotnet-gmime-sharp-devel -l pl.UTF-8
 Część dla programistów dotnet-gmime-sharp.
 
+%package -n vala-gmime
+Summary:	Vala API for gmime library
+Summary(pl.UTF-8):	API języka Vala do biblioteki gmime
+Group:		Development/Languages
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala
+
+%description -n vala-gmime
+Vala API for gmime library.
+
+%description -n vala-gmime -l pl.UTF-8
+API języka Vala do biblioteki gmime.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -121,7 +135,8 @@ Część dla programistów dotnet-gmime-sharp.
 %{__automake}
 %configure \
 	--enable-largefile \
-	--%{?with_dotnet:enable}%{!?with_dotnet:disable}-mono \
+	--enable-mono%{!?with_dotnet:=no} \
+	--disable-silent-rules \
 	--enable-smime \
 	--with-html-dir=%{_gtkdocdir}
 
@@ -148,13 +163,15 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_libdir}/libgmime-2.6.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgmime-2.6.so.0
+%{_libdir}/girepository-1.0/GMime-2.6.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %doc PORTING
 %attr(755,root,root) %{_libdir}/libgmime-2.6.so
-%{_pkgconfigdir}/gmime-2.6.pc
 %{_includedir}/gmime-2.6
+%{_datadir}/gir-1.0/GMime-2.6.gir
+%{_pkgconfigdir}/gmime-2.6.pc
 
 %files static
 %defattr(644,root,root,755)
@@ -175,3 +192,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gapi-2.0/gmime-api.xml
 %{_pkgconfigdir}/gmime-sharp-2.6.pc
 %endif
+
+%files -n vala-gmime
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/gmime-2.6.deps
+%{_datadir}/vala/vapi/gmime-2.6.vapi
