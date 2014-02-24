@@ -9,12 +9,12 @@
 Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
-Version:	2.6.19
+Version:	2.6.20
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
-# Source0-md5:	0554499bfdef919acd30db1f2d0043a3
+# Source0-md5:	82612c42f39f6e75273a92e6de44554f
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-am.patch
 URL:		http://spruce.sourceforge.net/gmime/
