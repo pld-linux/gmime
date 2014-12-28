@@ -21,7 +21,7 @@ Patch1:		%{name}-am.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gpgme-devel >= 1:1.1.6
