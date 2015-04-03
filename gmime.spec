@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_without	dotnet	# without .NET support
 
-%ifarch i386
+%ifarch i386 x32
 %undefine	with_dotnet
 %endif
 
@@ -11,7 +11,7 @@ Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
 Version:	2.6.20
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
