@@ -11,7 +11,7 @@ Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
 Version:	2.6.20
-Release:	4
+Release:	5
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
@@ -119,6 +119,9 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki gmime
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n vala-gmime
 Vala API for gmime library.
