@@ -1,3 +1,4 @@
+# NOTE: for gmime 3.0.x see gmime3.spec
 #
 # Conditional build:
 %bcond_without	dotnet	# without .NET support
