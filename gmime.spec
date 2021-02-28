@@ -77,9 +77,7 @@ Summary:	gmime library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki gmime
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 gmime library API documentation.
@@ -119,9 +117,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki gmime
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n vala-gmime
 Vala API for gmime library.
