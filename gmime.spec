@@ -14,7 +14,7 @@ Version:	2.6.23
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gmime/2.6/%{name}-%{version}.tar.xz
+Source0:	https://download.gnome.org/sources/gmime/2.6/%{name}-%{version}.tar.xz
 # Source0-md5:	247072236d84bd0fbbff299d69bdf333
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-am.patch
@@ -28,6 +28,8 @@ BuildRequires:	gpgme-devel >= 1:1.1.6
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 2.015
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel

@@ -1,6 +1,6 @@
---- gmime-2.6.1.orig/configure.ac	2009-04-09 14:38:18.000000000 +0200
-+++ gmime-2.6.1/configure.ac	2009-04-09 15:12:53.710788863 +0200
-@@ -387,13 +387,13 @@
+--- gmime-2.6.23/configure.ac.orig	2022-04-25 21:54:09.221548521 +0200
++++ gmime-2.6.23/configure.ac	2022-04-25 21:55:36.214410573 +0200
+@@ -550,13 +550,13 @@ dnl ****************************
  dnl *** Checks for libsocket ***
  dnl ****************************
  LIBSOCKET=""
@@ -14,5 +14,5 @@
 -AC_CHECK_LIB(nsl, getaddrinfo, LIBNSL="-lnsl")
 +AC_CHECK_FUNC(getaddrinfo,,[AC_CHECK_LIB(nsl, getaddrinfo, LIBNSL="-lnsl")])
  
- dnl ****************************
- dnl *** Enable Mono bindings ***
+ dnl ******************************************
+ dnl *** Checks for GpgME needed for S/MIME ***
