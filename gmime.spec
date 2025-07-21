@@ -11,13 +11,14 @@ Summary:	GMIME library
 Summary(pl.UTF-8):	Biblioteka GMIME
 Name:		gmime
 Version:	2.6.23
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gmime/2.6/%{name}-%{version}.tar.xz
 # Source0-md5:	247072236d84bd0fbbff299d69bdf333
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-am.patch
+Patch2:		%{name}-largefile.patch
 URL:		http://spruce.sourceforge.net/gmime/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
@@ -131,6 +132,7 @@ API języka Vala do biblioteki gmime.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %{__libtoolize}
